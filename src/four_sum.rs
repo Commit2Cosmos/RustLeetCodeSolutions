@@ -124,10 +124,3 @@ impl Solution {
     //     res.into_iter().collect()
     // }
 }
-
-fn main() {
-    let nums = [0,0,0,1000000000,1000000000,1000000000,1000000000].to_vec();
-    let target = 1000000000;
-    println!("{:?}", Solution::four_sum(nums, target));
-    // println!("{}", i32::MAX);
-}
