@@ -1,15 +1,16 @@
-mod shortest_distance_addition_queries_two;
+mod find_number_winning_players;
 
 
 fn main() {
     let inp: Vec<(i32, Vec<Vec<i32>>)> = [
-        (5, [[2,4],[0,2],[0,4]].iter().map(|&arr| arr.to_vec()).collect()),
-        (4, [[0,3],[0,2]].iter().map(|&arr| arr.to_vec()).collect()),
+        (4, [[0,0],[1,0],[1,0],[2,1],[2,1],[2,0]].iter().map(|&arr| arr.to_vec()).collect()),
+        (5, [[1,1],[1,2],[1,3],[1,4]].iter().map(|&arr| arr.to_vec()).collect()),
+        (5, [[1,1],[2,4],[2,4],[2,4]].iter().map(|&arr| arr.to_vec()).collect()),
     ].to_vec();
 
 
     for (idx, i) in inp.iter().enumerate() {
-        let res = shortest_distance_addition_queries_two::Solution::shortest_distance_after_queries(
+        let res = find_number_winning_players::Solution::winning_player_count(
             i.0, i.1.clone()
         );
         println!("Case {}: {:?}", idx, res);
