@@ -1,19 +1,18 @@
-mod find_number_winning_players;
+mod min_flips_grid_palindromic;
 
 
 fn main() {
-    let inp: Vec<(i32, Vec<Vec<i32>>)> = [
-        (4, [[0,0],[1,0],[1,0],[2,1],[2,1],[2,0]].iter().map(|&arr| arr.to_vec()).collect()),
-        (5, [[1,1],[1,2],[1,3],[1,4]].iter().map(|&arr| arr.to_vec()).collect()),
-        (5, [[1,1],[2,4],[2,4],[2,4]].iter().map(|&arr| arr.to_vec()).collect()),
+    let inp: Vec<Vec<Vec<i32>>> = [
+        [[1,0,0],[0,0,0],[0,0,1]].iter().map(|&arr| arr.to_vec()).collect(),
+        [[0,1],[0,1],[0,0]].iter().map(|&arr| arr.to_vec()).collect(),
     ].to_vec();
 
 
-    for (idx, i) in inp.iter().enumerate() {
-        let res = find_number_winning_players::Solution::winning_player_count(
-            i.0, i.1.clone()
+    for (idx, i) in inp.into_iter().enumerate() {
+        let res = min_flips_grid_palindromic::Solution::min_flips(
+            i
         );
-        println!("Case {}: {:?}", idx, res);
+        println!("Case {}: {:?}", idx+1, res);
     }
 
 
