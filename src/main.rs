@@ -1,15 +1,16 @@
-mod min_flips_grid_palindromic_two;
+mod time_taken_mark_all_nodes;
 
 
 fn main() {
     let inp: Vec<Vec<Vec<i32>>> = [
-        [[1,0,0],[0,1,0],[0,0,1]].iter().map(|&arr| arr.to_vec()).collect(),
+        [[0,1],[0,2]].iter().map(|&arr| arr.to_vec()).collect(),
+        [[2,4],[0,1],[2,3],[0,2]].iter().map(|&arr| arr.to_vec()).collect(),
         // [[0,1],[0,1],[0,0]].iter().map(|&arr| arr.to_vec()).collect(),
     ].to_vec();
 
 
     for (idx, i) in inp.into_iter().enumerate() {
-        let res = min_flips_grid_palindromic_two::Solution::min_flips(
+        let res = time_taken_mark_all_nodes::Solution::time_taken(
             i
         );
         println!("Case {}: {:?}", idx+1, res);
