@@ -1,17 +1,17 @@
-mod longest_turbulent_subarray;
+mod contains_duplicate_2;
 
 
 fn main() {
-    let inp: Vec<Vec<i32>> = [
-        [9,4,2,10,7,8,8,1,9].to_vec(),
-        [4,8,12,16].to_vec(),
-        [100].to_vec(),
+    let inp = [
+        ([1,2,3,1].to_vec(), 3),
+        ([1,0,1,1].to_vec(), 1),
+        ([1,2,3,1,2,3].to_vec(), 2)
     ].to_vec();
 
 
     for (idx, i) in inp.into_iter().enumerate() {
-        let res = longest_turbulent_subarray::Solution::max_turbulence_size(
-            i
+        let res = contains_duplicate_2::Solution::contains_nearby_duplicate(
+            i.0, i.1
         );
         println!("Case {}: {:?}", idx+1, res);
     }
