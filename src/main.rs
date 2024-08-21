@@ -1,16 +1,16 @@
-mod contains_duplicate_2;
+mod longest_rep_char_replacement;
 
 
 fn main() {
     let inp = [
-        ([1,2,3,1].to_vec(), 3),
-        ([1,0,1,1].to_vec(), 1),
-        ([1,2,3,1,2,3].to_vec(), 2)
+        ("ABAB".to_string(), 2),
+        ("AABABBA".to_string(), 1),
+        ("ABAA".to_string(), 0)
     ].to_vec();
 
 
     for (idx, i) in inp.into_iter().enumerate() {
-        let res = contains_duplicate_2::Solution::contains_nearby_duplicate(
+        let res = longest_rep_char_replacement::Solution::character_replacement(
             i.0, i.1
         );
         println!("Case {}: {:?}", idx+1, res);
