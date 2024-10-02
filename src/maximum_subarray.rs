@@ -1,5 +1,5 @@
 
-pub struct Solution{}
+pub struct Solution;
 
 
 impl Solution {
