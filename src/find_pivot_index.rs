@@ -2,15 +2,14 @@ pub struct Solution;
 
 impl Solution {
     pub fn pivot_index(nums: Vec<i32>) -> i32 {
-        //* calculate prefix sum */
+        let mut presum = 0;
         let sum: i32 = nums.iter().sum();
-        let mut left = 0;
 
-        for i in 0..nums.len() {
-            if left == sum-left-nums[i] {
-                return i as i32;
+        for (idx, x) in nums.into_iter().enumerate() {
+            if sum - x - presum == presum {
+                return idx as i32;
             }
-            left += nums[i];
+            presum += x;
         }
 
         -1
