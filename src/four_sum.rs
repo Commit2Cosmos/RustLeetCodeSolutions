@@ -4,23 +4,19 @@ pub struct Solution;
 
 impl Solution {
     pub fn four_sum(mut nums: Vec<i32>, target: i32) -> Vec<Vec<i32>> {
-        let right_default = nums.len()-1;
-        if right_default < 3 {
-            return vec![];
-        };
         let mut res = Vec::new();
         nums.sort();
-        Solution::k_sum_recur(&nums, target, 4, &mut res, 0, &mut Vec::new());
+        Solution::k_sum_recur(&nums, target as i64, 4, &mut res, 0, &mut Vec::new());
 
         res
     }
 
 
-    fn k_sum_recur(nums: &Vec<i32>, target: i32, sum_num: usize, res: &mut Vec<Vec<i32>>, i: usize, arr: &mut Vec<i32>) {
+    fn k_sum_recur(nums: &Vec<i32>, target: i64, sum_num: usize, res: &mut Vec<Vec<i32>>, i: usize, arr: &mut Vec<i32>) {
 
         if sum_num != 2 {
             //* for loop calling the recur function
-            for j in i..nums.len()-(sum_num-1) {
+            for j in i..nums.len().saturating_sub(sum_num-1) {
 
                 //* eliminate duplicates
                 let jth = nums[j];
@@ -29,7 +25,7 @@ impl Solution {
                 }
 
                 arr.push(jth);
-                Solution::k_sum_recur(nums, target-jth, sum_num-1, res, j+1, arr);
+                Solution::k_sum_recur(nums, target-jth as i64, sum_num-1, res, j+1, arr);
                 arr.pop();
             }
 
@@ -43,7 +39,7 @@ impl Solution {
                 let num_l = nums[left];
                 let num_r = nums[right];
 
-                match (num_l + num_r).cmp(&target) {
+                match ((num_l + num_r) as i64).cmp(&target) {
                     Ordering::Less => left += 1,
                     Ordering::Greater => right -= 1,
                     Ordering::Equal => {
